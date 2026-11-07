@@ -35,7 +35,7 @@
 
 ## Özellikler
 
-|  |  |
+| Özellik | |
 |---|---|
 | 🎬 **Video duvar kağıtları** | MP4 / MOV / M4V, donanım çözücüyle. Tüm ekranlar tek çözücüyü paylaşır; işlemci kullanımı genelde %0–3. |
 | 🌐 **Web duvar kağıtları** | HTML / WebGL; Wallpaper Engine'in `wallpaperPropertyListener` arayüzü ve projenin varsayılan ayarlarıyla. |

@@ -38,7 +38,7 @@
 
 ## Features
 
-|  |  |
+| Feature | |
 |---|---|
 | 🎬 **Video wallpapers** | MP4 / MOV / M4V with hardware decoding. One decoder is shared by every display, so typical CPU use is 0–3 %. |
 | 🌐 **Web wallpapers** | HTML / WebGL, including Wallpaper Engine's `wallpaperPropertyListener` API and the project's default user properties. |
