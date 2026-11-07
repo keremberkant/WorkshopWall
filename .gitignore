@@ -1,0 +1,21 @@
+# Build output
+.build/
+dist/
+*.app
+*.zip
+*.sha256
+
+# Xcode / SwiftPM
+.swiftpm/
+*.xcodeproj/
+xcuserdata/
+DerivedData/
+Package.resolved
+
+# macOS
+.DS_Store
+._*
+
+# Never commit wallpapers or Steam data
+**/steamapps/
+SteamCMD/

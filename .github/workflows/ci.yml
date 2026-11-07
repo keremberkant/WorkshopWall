@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Swift version
+        run: swift --version
+
+      - name: Test
+        run: swift test
+
+      - name: Build app
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          [[ "$GITHUB_REF_TYPE" == "tag" ]] || VERSION="0.0.0-ci.${GITHUB_RUN_NUMBER}"
+          VERSION="$VERSION" scripts/build-app.sh --zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CanliDuvar
+          path: dist/*.zip*
+
+      - name: Publish release
+        if: github.ref_type == 'tag'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 \
+            && gh release upload "$GITHUB_REF_NAME" dist/*.zip dist/*.sha256 --clobber \
+            || gh release create "$GITHUB_REF_NAME" dist/*.zip dist/*.sha256 --title "Canlı Duvar ${GITHUB_REF_NAME#v}" --notes-file CHANGELOG.md
