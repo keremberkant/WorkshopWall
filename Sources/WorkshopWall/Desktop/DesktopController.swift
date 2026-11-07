@@ -1,6 +1,6 @@
 import AppKit
 import AVFoundation
-import CanliDuvarCore
+import WorkshopWallCore
 import Combine
 
 /// Plays the current wallpaper on every display.

@@ -1,6 +1,6 @@
 import AppKit
 import AVFoundation
-import CanliDuvarCore
+import WorkshopWallCore
 import WebKit
 
 /// Content of one display: a video layer, a web view or an image.
@@ -81,17 +81,17 @@ final class WallpaperView: NSView {
            'wallpaperRegisterMediaPropertiesListener', 'wallpaperRegisterMediaThumbnailListener',
            'wallpaperRegisterMediaPlaybackListener', 'wallpaperRegisterMediaTimelineListener']
             .forEach(function (n) { if (!window[n]) window[n] = noop; });
-          window.__canliDuvarSetPaused = function (p) {
+          window.__workshopWallSetPaused = function (p) {
             try { var l = window.wallpaperPropertyListener; if (l && l.setPaused) l.setPaused(p); } catch (e) {}
             document.querySelectorAll('video,audio').forEach(function (m) { p ? m.pause() : m.play().catch(noop); });
           };
-          window.__canliDuvarSetMuted = function (m) {
+          window.__workshopWallSetMuted = function (m) {
             document.querySelectorAll('video,audio').forEach(function (e) { e.muted = m; });
           };
           window.addEventListener('load', function () {
             setTimeout(function () {
               try { var l = window.wallpaperPropertyListener; if (l && l.applyUserProperties) l.applyUserProperties(props); } catch (e) {}
-              window.__canliDuvarSetMuted(\(muted));
+              window.__workshopWallSetMuted(\(muted));
             }, 50);
           });
         })();
@@ -114,12 +114,12 @@ final class WallpaperView: NSView {
     func setPaused(_ paused: Bool) {
         guard paused != self.paused else { return }
         self.paused = paused
-        webView?.evaluateJavaScript("window.__canliDuvarSetPaused && window.__canliDuvarSetPaused(\(paused))")
+        webView?.evaluateJavaScript("window.__workshopWallSetPaused && window.__workshopWallSetPaused(\(paused))")
         imageView?.animates = !paused
     }
 
     func setMuted(_ muted: Bool) {
-        webView?.evaluateJavaScript("window.__canliDuvarSetMuted && window.__canliDuvarSetMuted(\(muted))")
+        webView?.evaluateJavaScript("window.__workshopWallSetMuted && window.__workshopWallSetMuted(\(muted))")
     }
 
     func clear() {

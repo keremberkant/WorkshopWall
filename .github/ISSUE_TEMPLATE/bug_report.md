@@ -12,6 +12,6 @@ labels: bug
 
 **macOS version and Mac model:**
 
-**Canlı Duvar version** (About window / Info.plist):
+**WorkshopWall version** (About window / Info.plist):
 
 **Number of displays:**

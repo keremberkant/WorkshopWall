@@ -1,5 +1,5 @@
 import AppKit
-import CanliDuvarCore
+import WorkshopWallCore
 import IOKit.ps
 
 /// Watches everything that should pause playback: sleep, locked session, battery, Low Power Mode

@@ -1,4 +1,4 @@
-import CanliDuvarCore
+import WorkshopWallCore
 import SwiftUI
 
 struct WallpaperCard: View {

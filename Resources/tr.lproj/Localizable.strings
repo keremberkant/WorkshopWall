@@ -1,4 +1,4 @@
-/* Canlı Duvar – Türkçe */
+/* WorkshopWall – Türkçe */
 
 "Add Files…" = "Dosya Ekle…";
 "Add wallpaper files or folders" = "Duvar kağıdı dosyası veya klasörü ekle";
@@ -7,7 +7,7 @@
 "All" = "Tümü";
 "Also set the preview as the static desktop picture" = "Önizlemeyi sabit masaüstü resmi olarak da ayarla";
 "Apply" = "Uygula";
-"Canlı Duvar – Steam sign-in (only needed once). Your password and Steam Guard code go directly to Steam." = "Canlı Duvar – Steam girişi (yalnızca bir kez gerekir). Şifreniz ve Steam Guard kodunuz doğrudan Steam'e gider.";
+"WorkshopWall – Steam sign-in (only needed once). Your password and Steam Guard code go directly to Steam." = "WorkshopWall – Steam girişi (yalnızca bir kez gerekir). Şifreniz ve Steam Guard kodunuz doğrudan Steam'e gider.";
 "Change…" = "Değiştir…";
 "Choose Wallpaper" = "Duvar Kağıdı Seç";
 "Choose Wallpaper Engine project folders, the Workshop folder, or video / image / HTML files." = "Wallpaper Engine proje klasörlerini, Atölye klasörünü ya da video / resim / HTML dosyalarını seçin.";
@@ -19,7 +19,7 @@
 "Could not run SteamCMD: %@" = "SteamCMD çalıştırılamadı: %@";
 "Desktop" = "Masaüstü";
 "Detailed log" = "Ayrıntılı günlük";
-"Done. You can close this window and return to Canlı Duvar." = "Bitti. Bu pencereyi kapatıp Canlı Duvar'a dönebilirsiniz.";
+"Done. You can close this window and return to WorkshopWall." = "Bitti. Bu pencereyi kapatıp WorkshopWall'a dönebilirsiniz.";
 "Download and Add" = "İndir ve Ekle";
 "Download from Steam Workshop" = "Steam Atölye'den İndir";
 "Download from Workshop…" = "Atölyeden İndir…";
@@ -44,7 +44,7 @@
 "Move to Trash" = "Çöp Sepetine Taşı";
 "Mute" = "Sesi Kapat";
 "Mute wallpaper sound" = "Duvar kağıdı sesini kapat";
-"Needed only once. Your password and Steam Guard code are typed into Terminal and go directly to Steam — Canlı Duvar never sees or stores them." = "Yalnızca bir kez gerekir. Şifrenizi ve Steam Guard kodunuzu Terminal'e yazarsınız ve doğrudan Steam'e gider — Canlı Duvar bunları görmez ve saklamaz.";
+"Needed only once. Your password and Steam Guard code are typed into Terminal and go directly to Steam — WorkshopWall never sees or stores them." = "Yalnızca bir kez gerekir. Şifrenizi ve Steam Guard kodunuzu Terminal'e yazarsınız ve doğrudan Steam'e gider — WorkshopWall bunları görmez ve saklamaz.";
 "Next Wallpaper" = "Sonraki Duvar Kağıdı";
 "Next Wallpaper  ⌃⌥⌘→" = "Sonraki Duvar Kağıdı  ⌃⌥⌘→";
 "Next wallpaper" = "Sonraki duvar kağıdı";
@@ -74,7 +74,7 @@
 "Previous Wallpaper  ⌃⌥⌘←" = "Önceki Duvar Kağıdı  ⌃⌥⌘←";
 "Previous wallpaper" = "Önceki duvar kağıdı";
 "Previous wallpaper (⌘← · anywhere: ⌃⌥⌘←)" = "Önceki duvar kağıdı (⌘← · her yerden: ⌃⌥⌘←)";
-"Quit Canlı Duvar" = "Canlı Duvar'dan Çık";
+"Quit WorkshopWall" = "WorkshopWall'dan Çık";
 "Random Wallpaper" = "Rastgele Duvar Kağıdı";
 "Random wallpaper" = "Rastgele duvar kağıdı";
 "Resume" = "Devam Et";

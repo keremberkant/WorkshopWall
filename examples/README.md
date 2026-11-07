@@ -1,6 +1,6 @@
 # Sample wallpapers
 
-Eight original, MIT-licensed web wallpapers for Canlı Duvar. Each folder holds a single `index.html` (a WebGL fragment shader with a tiny loader), a `project.json` and a `preview.jpg`.
+Eight original, MIT-licensed web wallpapers for WorkshopWall. Each folder holds a single `index.html` (a WebGL fragment shader with a tiny loader), a `project.json` and a `preview.jpg`.
 
 | Folder | Look |
 |---|---|
@@ -15,13 +15,13 @@ Eight original, MIT-licensed web wallpapers for Canlı Duvar. Each folder holds 
 
 ## Use them
 
-Drag this `examples` folder (or any single sample) onto the Canlı Duvar library window. They also run in Wallpaper Engine, and you can open any `index.html` in a browser to preview it.
+Drag this `examples` folder (or any single sample) onto the WorkshopWall library window. They also run in Wallpaper Engine, and you can open any `index.html` in a browser to preview it.
 
 ## How they're built
 
 - The whole image is one fragment shader drawn on a full-screen triangle, so there are no textures or other files to load.
 - They render below native resolution (`SCALE` at the top of the script) because soft images look the same at 50–60 % and use far less GPU time.
-- They stop their animation loop when Canlı Duvar or Wallpaper Engine calls `wallpaperPropertyListener.setPaused(true)`.
+- They stop their animation loop when WorkshopWall or Wallpaper Engine calls `wallpaperPropertyListener.setPaused(true)`.
 - `index.html?t=12` starts the animation at a fixed time, which is how the preview images were made.
 
 ## Make your own

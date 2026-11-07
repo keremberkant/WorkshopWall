@@ -1,19 +1,19 @@
 <p align="center">
-  <img src="docs/icon.png" width="128" alt="Canlı Duvar simgesi">
+  <img src="docs/icon.png" width="128" alt="WorkshopWall simgesi">
 </p>
 
-<h1 align="center">Canlı Duvar</h1>
+<h1 align="center">WorkshopWall</h1>
 
 <p align="center">
-  <b>macOS için canlı duvar kağıtları.</b><br>
+  <b>Steam Atölye duvar kağıtları artık Mac'te.</b><br>
   Wallpaper Engine'in <i>video</i> ve <i>web</i> duvar kağıtlarını masaüstü simgelerinizin arkasında oynatır — Apple Silicon ve Intel'de yerel olarak.
 </p>
 
 <p align="center">
-  <a href="https://github.com/keremberkant/CanliDuvar/releases/latest"><img src="https://img.shields.io/github/v/release/keremberkant/CanliDuvar?label=indir&color=7c3aed" alt="Son sürüm"></a>
-  <a href="https://github.com/keremberkant/CanliDuvar/actions/workflows/ci.yml"><img src="https://github.com/keremberkant/CanliDuvar/actions/workflows/ci.yml/badge.svg" alt="CI durumu"></a>
+  <a href="https://github.com/keremberkant/WorkshopWall/releases/latest"><img src="https://img.shields.io/github/v/release/keremberkant/WorkshopWall?label=indir&color=7c3aed" alt="Son sürüm"></a>
+  <a href="https://github.com/keremberkant/WorkshopWall/actions/workflows/ci.yml"><img src="https://github.com/keremberkant/WorkshopWall/actions/workflows/ci.yml/badge.svg" alt="CI durumu"></a>
   <img src="https://img.shields.io/badge/macOS-14%2B-0a84ff?logo=apple&logoColor=white" alt="macOS 14 veya üstü">
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/keremberkant/CanliDuvar?color=22c55e" alt="MIT lisansı"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/keremberkant/WorkshopWall?color=22c55e" alt="MIT lisansı"></a>
 </p>
 
 <p align="center">
@@ -25,30 +25,30 @@
 </p>
 
 <p align="center">
-  <img src="docs/screenshots/hero.png" width="900" alt="Hareketli Aurora duvar kağıdının üzerinde Canlı Duvar kütüphane penceresi">
+  <img src="docs/screenshots/hero.png" width="900" alt="Hareketli Aurora duvar kağıdının üzerinde WorkshopWall kütüphane penceresi">
 </p>
 
-*Canlı Duvar*, hareketli duvar kağıtlarını masaüstü simgelerinizin arkasında oynatan küçük ve açık kaynaklı bir macOS uygulamasıdır. Wallpaper Engine projelerini doğrudan okur; böylece Windows'ta sahip olduğunuz duvar kağıtları Mac'inizde de oynar. Steam Atölye'den yeni duvar kağıdı da indirebilir. Swift, SwiftUI ve AppKit ile yazıldı; bağımlılığı yok, boyutu yaklaşık 4 MB.
+**WorkshopWall**, Steam Atölye'nin canlı duvar kağıtlarını Mac'inize getiren küçük ve açık kaynaklı bir macOS uygulamasıdır. Duvar kağıtlarını doğrudan Atölye'den indirir, Wallpaper Engine projelerini doğrudan okur (Windows'ta sahip olduklarınız da oynar) ve hepsini masaüstü simgelerinizin arkasında oynatır. Swift, SwiftUI ve AppKit ile yazıldı; bağımlılığı yok, boyutu yaklaşık 4 MB.
 
 > [!NOTE]
-> Canlı Duvar bağımsız bir projedir. Wallpaper Engine, Kristjan Skutta veya Valve ile **bir bağlantısı yoktur**. Atölye içeriği içermez ve dağıtmaz.
+> WorkshopWall bağımsız bir projedir. Wallpaper Engine, Kristjan Skutta veya Valve ile **bir bağlantısı yoktur**. Atölye içeriği içermez ve dağıtmaz.
 
 ## Özellikler
 
 | Özellik | |
 |---|---|
+| 📥 **Steam Atölye** | Atölye linklerini yapıştırın, Valve'ın resmi SteamCMD aracıyla indirin. Şifreniz uygulamaya hiç girmez. |
 | 🎬 **Video duvar kağıtları** | MP4 / MOV / M4V, donanım çözücüyle. Tüm ekranlar tek çözücüyü paylaşır; işlemci kullanımı genelde %0–3. |
 | 🌐 **Web duvar kağıtları** | HTML / WebGL; Wallpaper Engine'in `wallpaperPropertyListener` arayüzü ve projenin varsayılan ayarlarıyla. |
 | 🖼 **Resim ve GIF** | Sabit ve hareketli resimler, her ekranı dolduracak şekilde. |
 | 🖥 **Her ekran, her masaüstü** | Simgelerin arkasında durur; tıklamalar doğrudan masaüstüne geçer. |
 | ⏭ **Anında geçiş** | Her yerde çalışan kısayollar, önceki / sonraki / rastgele, Dock menüsü, menü çubuğu veya kütüphanede tek tık. |
-| 📥 **Steam Atölye** | Atölye linklerini yapıştırın, Valve'ın resmi SteamCMD aracıyla indirin. Şifreniz uygulamaya hiç girmez. |
 | 🔋 **Pil dostu** | Ekran uyuyunca, pildeyken, Düşük Güç Modunda veya tam ekran / büyütülmüş bir pencere masaüstünü kapatınca duraklar. Her kural kapatılabilir. |
 | 💾 **Kütüphane her yerde olabilir** | Gigabaytlarca duvar kağıdını harici diskte tutun. Klasörleri sürükleyip bırakın ya da Atölye klasörünü tek seferde ekleyin. |
 | 🌍 **Çok dilli** | İngilizce ve Türkçe. Yeni çevirilere açık. |
 
 <p align="center">
-  <img src="docs/screenshots/switching.gif" width="820" alt="Canlı Duvar'da duvar kağıtları arasında geçiş">
+  <img src="docs/screenshots/switching.gif" width="820" alt="WorkshopWall'da duvar kağıtları arasında geçiş">
 </p>
 
 ### Neler oynar, neler oynamaz
@@ -63,14 +63,14 @@
 
 ## Kurulum
 
-1. [Son sürümden](https://github.com/keremberkant/CanliDuvar/releases/latest) **`CanliDuvar-x.y.z.zip`** dosyasını indirip açın.
-2. **Canlı Duvar.app**'i **Uygulamalar** klasörüne taşıyın.
+1. [Son sürümden](https://github.com/keremberkant/WorkshopWall/releases/latest) **`WorkshopWall-x.y.z.zip`** dosyasını indirip açın.
+2. **WorkshopWall.app**'i **Uygulamalar** klasörüne taşıyın.
 3. Uygulama açık kaynaklı ama Apple tarafından onaylanmış (notarize) değil; bunun için ücretli geliştirici hesabı gerekiyor. İlk açılışta **uygulamaya sağ tık → Aç → Aç** deyin.
 
 > [!TIP]
 > macOS "hasarlı, açılamıyor" derse indirme karantina işaretini kaldırıp yeniden açın:
 > ```bash
-> xattr -dr com.apple.quarantine "/Applications/Canlı Duvar.app"
+> xattr -dr com.apple.quarantine "/Applications/WorkshopWall.app"
 > ```
 
 **macOS 14 Sonoma** veya üstü gerekir (Apple Silicon veya Intel). İndirmeyi doğrulamak isterseniz her sürümde zip'in yanında bir `.sha256` dosyası bulunur.
@@ -78,7 +78,7 @@
 ## Kullanım
 
 <p align="center">
-  <img src="docs/screenshots/library.png" width="720" alt="Canlı Duvar kütüphane penceresi">
+  <img src="docs/screenshots/library.png" width="720" alt="WorkshopWall kütüphane penceresi">
 </p>
 
 - **Duvar kağıdı ekleme:** dosya veya klasörleri pencereye sürükleyin ya da **+** düğmesine tıklayın. Tek bir Wallpaper Engine projesini, düz bir video / resim / `index.html` dosyasını ya da Atölye klasörünün tamamını (`…/steamapps/workshop/content/431960`) seçip hepsini birden ekleyebilirsiniz.
@@ -146,7 +146,7 @@ window.wallpaperPropertyListener = {
 ## Gizlilik ve güvenlik
 
 - **Analitik yok, uygulama kendi başına internete bağlanmaz.** Ağ yalnızca SteamCMD'yi kurarken (Valve'ın sunucusundan) ve Atölye öğesi indirirken (SteamCMD üzerinden) kullanılır.
-- **Steam şifreniz yalnızca Terminal'de**, Valve'ın SteamCMD aracına girilir. Canlı Duvar şifrenizi görmez ve saklamaz.
+- **Steam şifreniz yalnızca Terminal'de**, Valve'ın SteamCMD aracına girilir. WorkshopWall şifrenizi görmez ve saklamaz.
 - **Web duvar kağıtları korumalı alanda çalışır:** WebKit'in web içeriği sürecinde, yalnızca kendi klasörlerindeki dosyaları okuyabilirler (test edildi: ev klasörünüzdeki başka dosyalar okunamıyor). Wallpaper Engine'de olduğu gibi web duvar kağıtları internete erişebilir; yalnızca güvendiğiniz duvar kağıtlarını ekleyin.
 - **Özel izin gerekmez.** Genel kısayollar Carbon kısayol arayüzünü kullanır (Erişilebilirlik izni gerekmez); "masaüstü kapalı mı" kontrolü yalnızca pencere sınırlarını okur (Ekran Kaydı izni gerekmez).
 
@@ -179,7 +179,7 @@ macOS uygulamaların kilit ekranına çizim yapmasına izin vermez. **Ayarlar �
 <details>
 <summary><b>Duvar kağıtlarım nerede saklanıyor?</b></summary>
 
-Varsayılan olarak `~/Library/Application Support/CanliDuvar/Wallpapers` klasöründe. Ayarlar'dan harici disk dahil herhangi bir klasörü seçebilirsiniz.
+Varsayılan olarak `~/Library/Application Support/WorkshopWall/Wallpapers` klasöründe. Ayarlar'dan harici disk dahil herhangi bir klasörü seçebilirsiniz.
 </details>
 
 ## Kaynaktan derleme
@@ -187,15 +187,15 @@ Varsayılan olarak `~/Library/Application Support/CanliDuvar/Wallpapers` klasör
 Gereksinim: macOS 14+ üzerinde Xcode 15+ (Swift 5.9+).
 
 ```bash
-git clone https://github.com/keremberkant/CanliDuvar.git
-cd CanliDuvar
+git clone https://github.com/keremberkant/WorkshopWall.git
+cd WorkshopWall
 swift test                                 # birim testleri
-scripts/build-app.sh                       # → dist/Canlı Duvar.app (universal)
+scripts/build-app.sh                       # → dist/WorkshopWall.app (universal)
 scripts/build-app.sh --install             # derle ve /Applications'a kopyala
 VERSION=1.2.0 scripts/build-app.sh --zip   # sürüm zip'i + SHA-256
 ```
 
-Dilerseniz `Package.swift` dosyasını Xcode'da açıp `CanliDuvar` şemasını çalıştırabilirsiniz. Proje yapısı ve teknik ayrıntılar için [İngilizce README](README.md#project-layout)'ye bakın.
+Dilerseniz `Package.swift` dosyasını Xcode'da açıp `WorkshopWall` şemasını çalıştırabilirsiniz. Proje yapısı ve teknik ayrıntılar için [İngilizce README](README.md#project-layout)'ye bakın.
 
 ## Katkı
 
@@ -205,4 +205,4 @@ Hata bildirimleri ve pull request'ler memnuniyetle karşılanır: [CONTRIBUTING.
 
 [MIT](LICENSE) © keremberkant.
 
-Wallpaper Engine ilgili sahiplerinin ticari markasıdır; Steam ve SteamCMD, Valve Corporation'ın ticari markalarıdır. Ekran görüntülerinde bu depodaki özgün örnek duvar kağıtları kullanılmıştır.
+Wallpaper Engine ilgili sahiplerinin ticari markasıdır; Steam ve SteamCMD, Valve Corporation'ın ticari markalarıdır. Ekran görüntülerinde bu depodaki özgün örnek duvar kağıtları kullanılmıştır. WorkshopWall'ın 1.0 sürümünün adı *Canlı Duvar*'dı; güncellediğinizde ayarlarınız ve kütüphaneniz korunur.

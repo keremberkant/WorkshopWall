@@ -1,5 +1,5 @@
 import AppKit
-import CanliDuvarCore
+import WorkshopWallCore
 
 /// Downloads Wallpaper Engine Workshop items with Valve's official SteamCMD tool.
 ///
@@ -65,8 +65,8 @@ final class WorkshopDownloader: ObservableObject {
     func openLoginTerminal() {
         guard !login.isEmpty else { status = String(localized: "Enter your Steam user name first."); return }
         let command = root.appendingPathComponent("steam-login.command")
-        let intro = String(localized: "Canlı Duvar – Steam sign-in (only needed once). Your password and Steam Guard code go directly to Steam.")
-        let done = String(localized: "Done. You can close this window and return to Canlı Duvar.")
+        let intro = String(localized: "WorkshopWall – Steam sign-in (only needed once). Your password and Steam Guard code go directly to Steam.")
+        let done = String(localized: "Done. You can close this window and return to WorkshopWall.")
         let body = """
         #!/bin/zsh
         cd \(shellQuote(root.path))

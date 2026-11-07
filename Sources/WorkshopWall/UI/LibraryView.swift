@@ -1,4 +1,4 @@
-import CanliDuvarCore
+import WorkshopWallCore
 import SwiftUI
 import UniformTypeIdentifiers
 
@@ -37,7 +37,7 @@ struct LibraryView: View {
         .sheet(isPresented: $showWorkshop) { WorkshopSheet() }
         .onDrop(of: [.fileURL], isTargeted: $dropTargeted, perform: handleDrop)
         .onReceive(NotificationCenter.default.publisher(for: .showWorkshop)) { _ in showWorkshop = true }
-        .navigationTitle("Canlı Duvar")
+        .navigationTitle("WorkshopWall")
     }
 
     @ViewBuilder private var content: some View {
@@ -151,7 +151,7 @@ struct LibraryView: View {
 }
 
 extension Notification.Name {
-    static let showWorkshop = Notification.Name("CanliDuvar.showWorkshop")
+    static let showWorkshop = Notification.Name("WorkshopWall.showWorkshop")
 }
 
 /// Current wallpaper with previous / next / pause controls.

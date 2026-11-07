@@ -1,6 +1,6 @@
 import AppKit
 import Carbon.HIToolbox
-import CanliDuvarCore
+import WorkshopWallCore
 
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate {

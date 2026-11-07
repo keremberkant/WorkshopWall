@@ -1,8 +1,8 @@
 #!/bin/zsh
-# Builds "Canlı Duvar.app" (universal: Apple silicon + Intel) into ./dist.
+# Builds "WorkshopWall.app" (universal: Apple silicon + Intel) into ./dist.
 #
 #   scripts/build-app.sh             build the app
-#   scripts/build-app.sh --zip       also create dist/CanliDuvar-<version>.zip for a release
+#   scripts/build-app.sh --zip       also create dist/WorkshopWall-<version>.zip for a release
 #   scripts/build-app.sh --install   also copy it to /Applications
 #
 # VERSION env var sets the version (default: latest git tag, or 0.0.0-dev).
@@ -12,16 +12,16 @@ cd "$(dirname "$0")/.."
 VERSION="${VERSION:-$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//' || true)}"
 VERSION="${VERSION:-0.0.0-dev}"
 BUILD_NUMBER="$(git rev-list --count HEAD 2>/dev/null || echo 1)"
-APP_NAME="Canlı Duvar"
+APP_NAME="WorkshopWall"
 APP="dist/$APP_NAME.app"
 
 echo "→ Building $APP_NAME $VERSION ($BUILD_NUMBER)…"
 swift build -c release --arch arm64 --arch x86_64
-BIN="$(swift build -c release --arch arm64 --arch x86_64 --show-bin-path)/CanliDuvar"
+BIN="$(swift build -c release --arch arm64 --arch x86_64 --show-bin-path)/WorkshopWall"
 
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
-cp "$BIN" "$APP/Contents/MacOS/CanliDuvar"
+cp "$BIN" "$APP/Contents/MacOS/WorkshopWall"
 cp Resources/AppIcon.icns "$APP/Contents/Resources/"
 cp -R Resources/*.lproj "$APP/Contents/Resources/"
 
@@ -32,8 +32,8 @@ cat > "$APP/Contents/Info.plist" <<PLIST
 <dict>
     <key>CFBundleName</key><string>$APP_NAME</string>
     <key>CFBundleDisplayName</key><string>$APP_NAME</string>
-    <key>CFBundleIdentifier</key><string>com.catkayastudio.canliduvar</string>
-    <key>CFBundleExecutable</key><string>CanliDuvar</string>
+    <key>CFBundleIdentifier</key><string>com.catkayastudio.workshopwall</string>
+    <key>CFBundleExecutable</key><string>WorkshopWall</string>
     <key>CFBundleIconFile</key><string>AppIcon</string>
     <key>CFBundlePackageType</key><string>APPL</string>
     <key>CFBundleShortVersionString</key><string>$VERSION</string>
@@ -55,14 +55,14 @@ echo "✓ $APP"
 for arg in "$@"; do
     case "$arg" in
         --zip)
-            ZIP="dist/CanliDuvar-$VERSION.zip"
+            ZIP="dist/WorkshopWall-$VERSION.zip"
             rm -f "$ZIP"
             ditto -c -k --sequesterRsrc --keepParent "$APP" "$ZIP"
             shasum -a 256 "$ZIP" | tee "$ZIP.sha256"
             echo "✓ $ZIP"
             ;;
         --install)
-            pkill -x CanliDuvar 2>/dev/null || true
+            pkill -x WorkshopWall 2>/dev/null || true
             rm -rf "/Applications/$APP_NAME.app"
             cp -R "$APP" /Applications/
             echo "✓ Installed to /Applications/$APP_NAME.app"

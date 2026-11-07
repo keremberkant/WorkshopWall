@@ -2,17 +2,17 @@
 import PackageDescription
 
 let package = Package(
-    name: "CanliDuvar",
+    name: "WorkshopWall",
     defaultLocalization: "en",
     platforms: [.macOS(.v14)],
     products: [
-        .executable(name: "CanliDuvar", targets: ["CanliDuvar"]),
+        .executable(name: "WorkshopWall", targets: ["WorkshopWall"]),
     ],
     targets: [
         // Pure, UI-free logic: wallpaper parsing, Workshop link parsing, SteamCMD output parsing.
-        .target(name: "CanliDuvarCore"),
+        .target(name: "WorkshopWallCore"),
         // The macOS app (SwiftUI + AppKit).
-        .executableTarget(name: "CanliDuvar", dependencies: ["CanliDuvarCore"]),
-        .testTarget(name: "CanliDuvarCoreTests", dependencies: ["CanliDuvarCore"]),
+        .executableTarget(name: "WorkshopWall", dependencies: ["WorkshopWallCore"]),
+        .testTarget(name: "WorkshopWallCoreTests", dependencies: ["WorkshopWallCore"]),
     ]
 )

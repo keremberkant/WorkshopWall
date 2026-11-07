@@ -38,7 +38,7 @@ struct MenuBarMenu: View {
         Divider()
         Button("Stop Live Wallpaper") { desktop.stop() }
             .disabled(desktop.current == nil)
-        Button("Quit Canlı Duvar") { NSApp.terminate(nil) }
+        Button("Quit WorkshopWall") { NSApp.terminate(nil) }
             .keyboardShortcut("q")
     }
 }

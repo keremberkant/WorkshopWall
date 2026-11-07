@@ -1,5 +1,5 @@
 import AppKit
-import CanliDuvarCore
+import WorkshopWallCore
 
 /// The folder of wallpapers the user has added (can live on an external drive).
 @MainActor
@@ -11,7 +11,7 @@ final class WallpaperLibrary: ObservableObject {
 
     static var defaultRoot: URL {
         FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-            .appendingPathComponent("CanliDuvar/Wallpapers", isDirectory: true)
+            .appendingPathComponent("WorkshopWall/Wallpapers", isDirectory: true)
     }
 
     init() {

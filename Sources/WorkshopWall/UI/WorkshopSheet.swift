@@ -1,4 +1,4 @@
-import CanliDuvarCore
+import WorkshopWallCore
 import SwiftUI
 
 struct WorkshopSheet: View {
@@ -38,7 +38,7 @@ struct WorkshopSheet: View {
                     Button("Sign In to Steam…") { workshop.openLoginTerminal() }
                         .disabled(workshop.username.isEmpty || !workshop.isInstalled)
                 }
-                Text("Needed only once. Your password and Steam Guard code are typed into Terminal and go directly to Steam — Canlı Duvar never sees or stores them.")
+                Text("Needed only once. Your password and Steam Guard code are typed into Terminal and go directly to Steam — WorkshopWall never sees or stores them.")
                     .font(.caption).foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }

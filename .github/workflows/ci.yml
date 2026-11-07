@@ -31,7 +31,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: CanliDuvar
+          name: WorkshopWall
           path: dist/*.zip*
 
       - name: Publish release
@@ -41,4 +41,4 @@ jobs:
         run: |
           gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 \
             && gh release upload "$GITHUB_REF_NAME" dist/*.zip dist/*.sha256 --clobber \
-            || gh release create "$GITHUB_REF_NAME" dist/*.zip dist/*.sha256 --title "Canlı Duvar ${GITHUB_REF_NAME#v}" --notes-file CHANGELOG.md
+            || gh release create "$GITHUB_REF_NAME" dist/*.zip dist/*.sha256 --title "WorkshopWall ${GITHUB_REF_NAME#v}" --notes-file CHANGELOG.md

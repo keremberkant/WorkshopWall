@@ -1,7 +1,10 @@
 # Changelog
 
-## Unreleased
+## 1.1.0 — 2026-11-07
 
+- **Renamed to WorkshopWall** (was *Canlı Duvar*). The new app has its own bundle ID; on first launch it takes over the
+  old app's settings and library automatically. Turn *Launch at login* on again if you used it, and delete the old
+  *Canlı Duvar* app.
 - Eight original sample web wallpapers in `examples/` (Aurora, Caustics, Synthwave, Dunes, Nebula, Lava Lamp, Silk, Bokeh)
 - `examples/water-waves` moved to `templates/water-waves`
 - README with screenshots, FAQ and a guide to making your own wallpaper

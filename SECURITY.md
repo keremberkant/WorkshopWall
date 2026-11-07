@@ -2,14 +2,14 @@
 
 ## Supported versions
 
-Only the [latest release](https://github.com/keremberkant/CanliDuvar/releases/latest) gets security fixes.
+Only the [latest release](https://github.com/keremberkant/WorkshopWall/releases/latest) gets security fixes.
 
 ## Reporting a vulnerability
 
 Please **don't open a public issue** for security problems. Report them privately through
-[GitHub's private vulnerability reporting](https://github.com/keremberkant/CanliDuvar/security/advisories/new).
+[GitHub's private vulnerability reporting](https://github.com/keremberkant/WorkshopWall/security/advisories/new).
 
-Useful details: the macOS version, the Canlı Duvar version, steps to reproduce, and, if it involves a wallpaper, a minimal example.
+Useful details: the macOS version, the WorkshopWall version, steps to reproduce, and, if it involves a wallpaper, a minimal example.
 
 You should get a reply within a week. Once a fix is released, you'll be credited in the changelog unless you'd rather not be.
 

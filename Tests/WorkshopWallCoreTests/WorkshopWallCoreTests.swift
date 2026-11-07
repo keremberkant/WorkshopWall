@@ -1,6 +1,6 @@
 import CoreGraphics
 import XCTest
-@testable import CanliDuvarCore
+@testable import WorkshopWallCore
 
 final class WallpaperTests: XCTestCase {
     private var tmp: URL!

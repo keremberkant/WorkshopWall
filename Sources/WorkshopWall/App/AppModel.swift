@@ -1,5 +1,5 @@
 import AppKit
-import CanliDuvarCore
+import WorkshopWallCore
 
 /// Shared app state. The window, menu bar menu, Dock menu and global shortcuts all use this instance.
 @MainActor
@@ -12,6 +12,7 @@ final class AppModel {
     let workshop: WorkshopDownloader
 
     private init() {
+        LegacyMigration.run()
         settings = AppSettings()
         library = WallpaperLibrary()
         desktop = DesktopController(settings: settings)

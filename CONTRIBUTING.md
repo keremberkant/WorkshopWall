@@ -11,7 +11,7 @@ scripts/build-app.sh --install   # build and install the app
 
 Open `Package.swift` in Xcode if you prefer an IDE.
 
-- Logic that doesn't need AppKit/SwiftUI goes into `Sources/CanliDuvarCore` and gets a test in `Tests/`.
+- Logic that doesn't need AppKit/SwiftUI goes into `Sources/WorkshopWallCore` and gets a test in `Tests/`.
 - UI strings are written in English and wrapped so they're localizable (`Text("…")`, `String(localized: "…")`).
   Add the Turkish translation to `Resources/tr.lproj/Localizable.strings` (or note it in your PR).
 - Keep the app dependency-free and battery-friendly: nothing should run while every display is paused.

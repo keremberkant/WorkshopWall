@@ -13,7 +13,7 @@
 <canvas id="c"></canvas>
 <script>
 /*
- * Silk — a sample live wallpaper for Canlı Duvar.
+ * Silk — a sample live wallpaper for WorkshopWall.
  * Single-file WebGL fragment shader; also works in Wallpaper Engine and any browser.
  * Original work, released under the MIT license with the rest of the repository.
  */
@@ -105,7 +105,7 @@ void main() {
   }
   requestAnimationFrame(frame);
 
-  // Wallpaper Engine / Canlı Duvar call this when the desktop is hidden or the Mac is on battery.
+  // Wallpaper Engine / WorkshopWall call this when the desktop is hidden or the Mac is on battery.
   window.wallpaperPropertyListener = {
     setPaused: function (p) {
       if (p === paused) return;

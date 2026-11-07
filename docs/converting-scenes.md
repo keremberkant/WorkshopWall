@@ -1,9 +1,9 @@
 # Recreating simple Scene wallpapers
 
-Wallpaper Engine *Scene* wallpapers use a proprietary renderer, so Canlı Duvar can't play them directly.
+Wallpaper Engine *Scene* wallpapers use a proprietary renderer, so WorkshopWall can't play them directly.
 Many popular scenes, though, are just **one image plus one or two built-in effects** (water waves, shake,
 scroll, pulse…). Those can be rebuilt as a small WebGL web wallpaper that looks the same and plays in
-Canlı Duvar. Only do this with wallpapers you have the right to use.
+WorkshopWall. Only do this with wallpapers you have the right to use.
 
 ## 1. Look inside the scene
 
@@ -49,7 +49,7 @@ open("image.png", "wb").write(d[start:end])
 
 Copy [`templates/water-waves`](../templates/water-waves) to a new folder, save your image there as
 `image.jpg`, and copy the effect values from `scene.json` into the `WAVES` array at the top of
-`index.html`. Then drag the folder into Canlı Duvar.
+`index.html`. Then drag the folder into WorkshopWall.
 
 Other effects follow the same idea: move the texture coordinate over time in a fragment shader.
 Pull requests with more templates are welcome.

@@ -4,6 +4,6 @@ about: Suggest an idea
 labels: enhancement
 ---
 
-**What would you like Canlı Duvar to do?**
+**What would you like WorkshopWall to do?**
 
 **Why is it useful?**

@@ -2,7 +2,7 @@ import AppKit
 import SwiftUI
 
 @main
-struct CanliDuvarApp: App {
+struct WorkshopWallApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @StateObject private var settings = AppModel.shared.settings
     @StateObject private var library = AppModel.shared.library
@@ -10,7 +10,7 @@ struct CanliDuvarApp: App {
     @StateObject private var workshop = AppModel.shared.workshop
 
     var body: some Scene {
-        Window("Canlı Duvar", id: "library") {
+        Window("WorkshopWall", id: "library") {
             LibraryView()
                 .environmentObjects(settings, library, desktop, workshop)
                 .frame(minWidth: 780, minHeight: 520)
@@ -37,7 +37,7 @@ struct CanliDuvarApp: App {
 
         // The status item reports its visibility back through this binding (KVO). Writing an unchanged
         // value would republish the settings, re-render every scene and loop forever — so only write changes.
-        MenuBarExtra("Canlı Duvar", systemImage: "play.rectangle.on.rectangle", isInserted: Binding(
+        MenuBarExtra("WorkshopWall", systemImage: "play.rectangle.on.rectangle", isInserted: Binding(
             get: { settings.showMenuBarIcon },
             set: { if $0 != settings.showMenuBarIcon { settings.showMenuBarIcon = $0 } })) {
             MenuBarMenu()
