@@ -47,7 +47,7 @@ open("image.png", "wb").write(d[start:end])
 
 ## 3. Use the template
 
-Copy [`examples/water-waves`](../examples/water-waves) to a new folder, save your image there as
+Copy [`templates/water-waves`](../templates/water-waves) to a new folder, save your image there as
 `image.jpg`, and copy the effect values from `scene.json` into the `WAVES` array at the top of
 `index.html`. Then drag the folder into Canlı Duvar.
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Eight original sample web wallpapers in `examples/` (Aurora, Caustics, Synthwave, Dunes, Nebula, Lava Lamp, Silk, Bokeh)
+- `examples/water-waves` moved to `templates/water-waves`
+- README with screenshots, FAQ and a guide to making your own wallpaper
+- Security policy and pull request template
+
 ## 1.0.0 — 2026-11-07
 
 First public release.

@@ -22,6 +22,12 @@ Open `Package.swift` in Xcode if you prefer an IDE.
 2. Make sure `swift test` passes and the app builds with `scripts/build-app.sh`.
 3. Describe what changed and how you tested it (which wallpaper types, how many displays).
 
+## Sample wallpapers
+
+New samples in `examples/` are welcome: one folder with `index.html`, `project.json` and a 640 px wide `preview.jpg`.
+Keep them original (no copyrighted images), self-contained (no network) and light on the GPU, and make them stop
+animating when `wallpaperPropertyListener.setPaused(true)` is called. [`examples/README.md`](examples/README.md) explains the structure.
+
 ## Translations
 
 Copy `Resources/tr.lproj` to `Resources/<language>.lproj`, translate the right-hand side of each line,

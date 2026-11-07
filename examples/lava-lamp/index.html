@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lava Lamp</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #000; }
+  canvas { display: block; width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script>
+/*
+ * Lava Lamp — a sample live wallpaper for Canlı Duvar.
+ * Single-file WebGL fragment shader; also works in Wallpaper Engine and any browser.
+ * Original work, released under the MIT license with the rest of the repository.
+ */
+(function () {
+  // Render below native resolution: these images are soft, and it saves a lot of GPU time.
+  var SCALE = 0.6;
+
+  var FRAGMENT = `
+precision highp float;
+uniform vec2 R;      // canvas size in pixels
+uniform float T;     // time in seconds
+float hash(vec2 p) { p = fract(p * vec2(123.34, 456.21)); p += dot(p, p + 45.32); return fract(p.x * p.y); }
+float noise(vec2 p) {
+  vec2 i = floor(p), f = fract(p);
+  vec2 u = f * f * (3.0 - 2.0 * f);
+  return mix(mix(hash(i), hash(i + vec2(1, 0)), u.x), mix(hash(i + vec2(0, 1)), hash(i + vec2(1, 1)), u.x), u.y);
+}
+float fbm(vec2 p) {
+  float v = 0.0, a = 0.5;
+  mat2 m = mat2(1.6, 1.2, -1.2, 1.6);
+  for (int i = 0; i < 5; i++) { v += a * noise(p); p = m * p; a *= 0.5; }
+  return v;
+}
+void main() {
+  vec2 uv = gl_FragCoord.xy / R;
+  vec2 p = (gl_FragCoord.xy - 0.5 * R) / R.y;
+  float field = 0.0;
+  for (int i = 0; i < 9; i++) {
+    float fi = float(i);
+    vec2 c = vec2(sin(T * (0.11 + fi * 0.013) + fi * 2.1) * (0.35 + 0.08 * mod(fi, 3.0)) * R.x / R.y,
+                  sin(T * (0.07 + fi * 0.011) + fi * 1.3) * 0.42);
+    float r = 0.07 + 0.035 * mod(fi * 7.0, 4.0);
+    field += r * r / dot(p - c, p - c);
+  }
+  vec3 bg = mix(vec3(0.12, 0.02, 0.15), vec3(0.4, 0.05, 0.2), uv.y);
+  float blob = smoothstep(0.95, 1.05, field);
+  vec3 hot = mix(vec3(1.0, 0.35, 0.1), vec3(1.0, 0.75, 0.25), clamp((field - 1.0) * 0.25, 0.0, 1.0));
+  hot = mix(hot, vec3(0.95, 0.15, 0.4), 1.0 - uv.y);
+  vec3 col = mix(bg, hot, blob);
+  col += vec3(1.0, 0.3, 0.3) * 0.18 * smoothstep(0.3, 1.0, field) * (1.0 - blob);
+  // glass highlight
+  col += 0.05 * smoothstep(0.4, 0.0, abs(uv.x - 0.2));
+  gl_FragColor = vec4(col, 1.0);
+}
+`;
+
+  var canvas = document.getElementById('c');
+  var gl = canvas.getContext('webgl', { antialias: false, alpha: false, preserveDrawingBuffer: true });
+  if (!gl) return;
+
+  function compile(type, src) {
+    var s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s));
+    return s;
+  }
+  var prog = gl.createProgram();
+  gl.attachShader(prog, compile(gl.VERTEX_SHADER, 'attribute vec2 a; void main() { gl_Position = vec4(a, 0.0, 1.0); }'));
+  gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAGMENT));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+  gl.enableVertexAttribArray(0);
+  gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+  var uR = gl.getUniformLocation(prog, 'R'), uT = gl.getUniformLocation(prog, 'T');
+
+  function resize() {
+    var dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.max(1, Math.round(innerWidth * dpr * SCALE));
+    canvas.height = Math.max(1, Math.round(innerHeight * dpr * SCALE));
+    gl.viewport(0, 0, canvas.width, canvas.height);
+  }
+  addEventListener('resize', function () { resize(); draw(); });
+  resize();
+
+  // ?t=12 starts at a fixed time (used for preview images).
+  var start = parseFloat(new URLSearchParams(location.search).get('t')) || 15.0;
+  var elapsed = start, last = null, paused = false;
+
+  function draw() {
+    gl.uniform2f(uR, canvas.width, canvas.height);
+    gl.uniform1f(uT, elapsed);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  }
+  function frame(now) {
+    if (paused) { last = null; return; }
+    if (last !== null) elapsed += Math.min(0.1, (now - last) / 1000);
+    last = now;
+    draw();
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  // Wallpaper Engine / Canlı Duvar call this when the desktop is hidden or the Mac is on battery.
+  window.wallpaperPropertyListener = {
+    setPaused: function (p) {
+      if (p === paused) return;
+      paused = p;
+      if (!p) requestAnimationFrame(frame);
+    }
+  };
+})();
+</script>
+</body>
+</html>

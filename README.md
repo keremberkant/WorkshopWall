@@ -1,95 +1,189 @@
 <p align="center">
-  <img src="docs/icon.png" width="160" alt="Canlı Duvar icon">
+  <img src="docs/icon.png" width="128" alt="Canlı Duvar app icon">
 </p>
 
 <h1 align="center">Canlı Duvar</h1>
 
 <p align="center">
-  <b>Live wallpapers for macOS.</b> Plays Wallpaper Engine <i>video</i> and <i>web</i> wallpapers on your Mac desktop — natively, on Apple silicon and Intel.
-  <br><br>
-  <a href="README.tr.md">Türkçe</a> ·
-  <a href="#install">Install</a> ·
-  <a href="#usage">Usage</a> ·
-  <a href="#building-from-source">Build</a>
+  <b>Live wallpapers for macOS.</b><br>
+  Plays Wallpaper Engine <i>video</i> and <i>web</i> wallpapers behind your desktop icons — natively, on Apple silicon and Intel.
 </p>
 
----
+<p align="center">
+  <a href="https://github.com/keremberkant/CanliDuvar/releases/latest"><img src="https://img.shields.io/github/v/release/keremberkant/CanliDuvar?label=download&color=7c3aed" alt="Latest release"></a>
+  <a href="https://github.com/keremberkant/CanliDuvar/actions/workflows/ci.yml"><img src="https://github.com/keremberkant/CanliDuvar/actions/workflows/ci.yml/badge.svg" alt="CI status"></a>
+  <img src="https://img.shields.io/badge/macOS-14%2B-0a84ff?logo=apple&logoColor=white" alt="macOS 14 or later">
+  <img src="https://img.shields.io/badge/Swift-5.9-F05138?logo=swift&logoColor=white" alt="Swift 5.9">
+  <img src="https://img.shields.io/badge/universal-arm64%20%2B%20x86__64-555" alt="Universal binary">
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/keremberkant/CanliDuvar?color=22c55e" alt="MIT license"></a>
+</p>
 
-*Canlı Duvar* (Turkish for "live wall") is a small, open-source macOS app that puts animated wallpapers behind your desktop icons. It reads Wallpaper Engine projects directly, so the wallpapers you already own on Windows can play on your Mac, and it can download new ones from the Steam Workshop.
+<p align="center">
+  <a href="#install">Install</a> ·
+  <a href="#usage">Usage</a> ·
+  <a href="#sample-wallpapers">Samples</a> ·
+  <a href="#make-your-own-wallpaper">Make your own</a> ·
+  <a href="#building-from-source">Build</a> ·
+  <a href="README.tr.md">Türkçe</a>
+</p>
 
-> Canlı Duvar is an independent project. It is **not affiliated with** Wallpaper Engine, Kristjan Skutta or Valve. It does not include or redistribute any wallpapers.
+<p align="center">
+  <img src="docs/screenshots/hero.png" width="900" alt="Canlı Duvar's library window on top of the animated Aurora wallpaper">
+</p>
+
+*Canlı Duvar* (Turkish for "living wall") is a small, open-source macOS app that puts animated wallpapers behind your desktop icons. It reads Wallpaper Engine projects directly, so the wallpapers you already own on Windows can play on your Mac, and it can download new ones from the Steam Workshop. It's written in Swift with SwiftUI and AppKit, has no dependencies and weighs about 4 MB.
+
+> [!NOTE]
+> Canlı Duvar is an independent project. It is **not affiliated with** Wallpaper Engine, Kristjan Skutta or Valve, and it does not include or redistribute any Workshop content.
 
 ## Features
 
-- 🎬 **Video wallpapers** (MP4 / MOV / M4V) with hardware decoding — typically 0–3 % CPU
-- 🌐 **Web wallpapers** (HTML / WebGL), including Wallpaper Engine's `wallpaperPropertyListener` API and default user properties
-- 🖼 **Images & GIFs**
-- 🖥 **Every display and every Space**, behind the desktop icons; clicks go through
-- ⏭ **Switch instantly** — global shortcuts, previous / next / random, Dock menu, menu bar, single-click in the library
-- 📥 **Steam Workshop downloads** with Valve's official SteamCMD — your password never touches the app
-- 🔋 **Battery friendly** — pauses automatically when the display sleeps, on battery, in Low Power Mode or when a full-screen / maximized window covers the desktop (each one optional)
-- 💾 **Library anywhere** — keep gigabytes of wallpapers on an external drive
-- 🌍 English and Turkish, universal binary, ~4 MB, no dependencies
+|  |  |
+|---|---|
+| 🎬 **Video wallpapers** | MP4 / MOV / M4V with hardware decoding. One decoder is shared by every display, so typical CPU use is 0–3 %. |
+| 🌐 **Web wallpapers** | HTML / WebGL, including Wallpaper Engine's `wallpaperPropertyListener` API and the project's default user properties. |
+| 🖼 **Images & GIFs** | Static and animated images, aspect-filled on every screen. |
+| 🖥 **Every display, every Space** | Sits behind the desktop icons; clicks go straight through to the desktop. |
+| ⏭ **Switch instantly** | Global shortcuts, previous / next / random, Dock menu, menu bar menu, or one click in the library. |
+| 📥 **Steam Workshop** | Paste Workshop links and download with Valve's official SteamCMD. Your password never touches the app. |
+| 🔋 **Battery friendly** | Pauses when the display sleeps, on battery, in Low Power Mode, or when a full-screen or maximized window covers the desktop. Each rule can be turned off. |
+| 💾 **Library anywhere** | Keep gigabytes of wallpapers on an external drive. Drag & drop folders, or import a whole Workshop folder at once. |
+| 🌍 **Localized** | English and Turkish. Translations welcome. |
+
+<p align="center">
+  <img src="docs/screenshots/switching.gif" width="820" alt="Switching between wallpapers in Canlı Duvar">
+</p>
 
 ### What plays and what doesn't
 
 | Wallpaper Engine type | macOS | Notes |
-|---|---|---|
-| Video | ✅ | MP4 / MOV / M4V. WebM is not supported by macOS. |
-| Web | ✅ | Audio visualizers open but don't react to system audio. |
+|---|:---:|---|
+| Video | ✅ | MP4 / MOV / M4V. WebM is not supported by macOS's video decoder. |
+| Web | ✅ | Audio visualizers load but don't react to system audio. |
 | Image / GIF | ✅ | |
-| Scene | ❌ | A proprietary, DirectX-based format. Simple scenes can be recreated as web wallpapers by hand (see [docs/converting-scenes.md](docs/converting-scenes.md)). |
+| Scene | ❌ | A proprietary, DirectX-based format. Simple scenes can be rebuilt as web wallpapers — see [docs/converting-scenes.md](docs/converting-scenes.md). |
 | Application | ❌ | Windows executables. |
 
 ## Install
 
-1. Download `CanliDuvar-x.y.z.zip` from the [latest release](../../releases/latest) and unzip it.
+1. Download **`CanliDuvar-x.y.z.zip`** from the [latest release](https://github.com/keremberkant/CanliDuvar/releases/latest) and unzip it.
 2. Move **Canlı Duvar.app** to **Applications**.
-3. The app is not notarized (no paid Apple Developer ID), so the first time **right-click → Open → Open**.
-   If macOS says the app is damaged, run:
-   ```bash
-   xattr -dr com.apple.quarantine "/Applications/Canlı Duvar.app"
-   ```
+3. The app is open source but not notarized (that requires a paid Apple Developer ID), so the first time **right-click the app → Open → Open**.
 
-Requires **macOS 14 Sonoma** or later.
+> [!TIP]
+> If macOS says the app "is damaged and can't be opened", remove the download quarantine flag and open it again:
+> ```bash
+> xattr -dr com.apple.quarantine "/Applications/Canlı Duvar.app"
+> ```
+
+Requires **macOS 14 Sonoma** or later, on Apple silicon or Intel. Each release has a `.sha256` file next to the zip if you want to verify the download.
 
 ## Usage
 
-- **Add wallpapers:** drag files or folders onto the window, or click **Add Files…**.
-  You can pick a single Wallpaper Engine project, or the whole Workshop folder
-  (`…/steamapps/workshop/content/431960`) to import everything at once.
-- **Apply:** click a card.
+<p align="center">
+  <img src="docs/screenshots/library.png" width="720" alt="The Canlı Duvar library window">
+</p>
+
+- **Add wallpapers:** drag files or folders onto the window, or click **+**. You can pick a single Wallpaper Engine project, a plain video / image / `index.html`, or the whole Workshop folder (`…/steamapps/workshop/content/431960`) to import everything at once.
+- **Apply:** click a card. The blue outline and check mark show what's playing.
 - **Switch:**
 
   | Shortcut | Action |
   |---|---|
-  | <kbd>⌃⌥⌘→</kbd> | Next wallpaper (works in any app) |
-  | <kbd>⌃⌥⌘←</kbd> | Previous wallpaper (works in any app) |
-  | <kbd>⌃⌥⌘↓</kbd> | Pause / resume (works in any app) |
-  | <kbd>⌘→</kbd> / <kbd>⌘←</kbd> | Next / previous (in the app) |
-  | <kbd>⌥⌘R</kbd> | Random wallpaper |
+  | <kbd>⌃</kbd> <kbd>⌥</kbd> <kbd>⌘</kbd> <kbd>→</kbd> | Next wallpaper (works in any app) |
+  | <kbd>⌃</kbd> <kbd>⌥</kbd> <kbd>⌘</kbd> <kbd>←</kbd> | Previous wallpaper (works in any app) |
+  | <kbd>⌃</kbd> <kbd>⌥</kbd> <kbd>⌘</kbd> <kbd>↓</kbd> | Pause / resume (works in any app) |
+  | <kbd>⌘</kbd> <kbd>→</kbd> / <kbd>⌘</kbd> <kbd>←</kbd> | Next / previous (in the app) |
+  | <kbd>⌥</kbd> <kbd>⌘</kbd> <kbd>R</kbd> | Random wallpaper |
 
-  Right-click the Dock icon for a list of all wallpapers.
-- Closing the window keeps the wallpaper running. Quit from the menu bar icon or the app menu.
-- **Settings** (<kbd>⌘,</kbd>): sound, pause rules, launch at login, menu bar icon, library folder,
-  and optionally setting the preview as your static desktop picture (lock screen / Mission Control).
+  You can also right-click the Dock icon, or use the menu bar icon, for a list of all wallpapers.
+- **Keep it running:** closing the window keeps the wallpaper playing. Quit from the menu bar icon or the app menu.
+- **Settings** (<kbd>⌘</kbd> <kbd>,</kbd>): sound, pause rules, launch at login, menu bar icon, library folder, and optionally using the wallpaper's preview as your static desktop picture (shown on the lock screen and in Mission Control).
 
 ### Downloading from the Steam Workshop
 
 You need a Steam account that owns Wallpaper Engine.
 
-1. **Download from Workshop…** → **Install** SteamCMD (≈80 MB, stored next to your library).
-2. Enter your Steam user name → **Sign In to Steam…**. A Terminal window opens where you type your password and Steam Guard code **directly into SteamCMD**. This is needed only once; SteamCMD remembers the session.
+1. Click the **download** button in the toolbar → **Install** SteamCMD (≈ 80 MB, stored next to your library).
+2. Enter your Steam user name → **Sign In to Steam…**. A Terminal window opens where you type your password and Steam Guard code **directly into SteamCMD**. You only need to do this once; SteamCMD remembers the session.
 3. Paste one or more Workshop links → **Download and Add**.
 
-Tip: filter the Workshop by *Type: Video* or *Web*. Scene items are removed after download because they can't play.
+Tip: filter the Workshop by *Type: Video* or *Web*. Scene items can't play, so they're removed after downloading.
+
+## Sample wallpapers
+
+The [`examples`](examples) folder has eight original WebGL wallpapers, each a single self-contained `index.html` that's MIT-licensed like the rest of the repo. Drag the `examples` folder onto the library window to add them all. They also work in Wallpaper Engine and in any browser.
+
+| | | | |
+|:---:|:---:|:---:|:---:|
+| <a href="examples/aurora"><img src="examples/aurora/preview.jpg" width="200" alt="Aurora"></a><br>**Aurora** | <a href="examples/caustics"><img src="examples/caustics/preview.jpg" width="200" alt="Caustics"></a><br>**Caustics** | <a href="examples/synthwave"><img src="examples/synthwave/preview.jpg" width="200" alt="Synthwave"></a><br>**Synthwave** | <a href="examples/dunes"><img src="examples/dunes/preview.jpg" width="200" alt="Dunes"></a><br>**Dunes** |
+| <a href="examples/nebula"><img src="examples/nebula/preview.jpg" width="200" alt="Nebula"></a><br>**Nebula** | <a href="examples/lava-lamp"><img src="examples/lava-lamp/preview.jpg" width="200" alt="Lava Lamp"></a><br>**Lava Lamp** | <a href="examples/silk"><img src="examples/silk/preview.jpg" width="200" alt="Silk"></a><br>**Silk** | <a href="examples/bokeh"><img src="examples/bokeh/preview.jpg" width="200" alt="Bokeh"></a><br>**Bokeh** |
+
+## Make your own wallpaper
+
+Any folder with one of these works:
+
+- a **video** (`.mp4`, `.mov`, `.m4v`), an **image** (`.jpg`, `.png`, `.gif`, `.heic`…), or an **`index.html`**
+- optionally a Wallpaper Engine–style **`project.json`** for the title and preview image:
+
+```json
+{
+  "title": "My Wallpaper",
+  "type": "web",
+  "file": "index.html",
+  "preview": "preview.jpg"
+}
+```
+
+Web wallpapers run in a sandboxed WebKit view and can only read files inside their own folder. To save battery, stop animating when the app asks you to:
+
+```js
+window.wallpaperPropertyListener = {
+  setPaused(paused) { /* stop or restart your requestAnimationFrame loop */ },
+  applyUserProperties(props) { /* optional: Wallpaper Engine user properties */ }
+};
+```
+
+The [sample wallpapers](examples) are a good starting point: copy one and edit its fragment shader. [`templates/water-waves`](templates/water-waves) is a template for turning a still image into a rippling water scene.
 
 ## Privacy & security
 
-- No analytics, no network requests of its own. Network access happens only when you install SteamCMD (from Valve's CDN) or download Workshop items (through SteamCMD).
-- Your Steam password is entered only in Terminal, into Valve's SteamCMD. Canlı Duvar never sees or stores it.
-- Web wallpapers run in WebKit's sandboxed web content process and can read only files inside their own folder (verified: files elsewhere in your home folder can't be read). Like in Wallpaper Engine, a web wallpaper can still use the network — only add wallpapers you trust.
-- Global shortcuts use the Carbon hot-key API, which needs no Accessibility permission.
+- **No analytics and no network requests of its own.** The network is used only when you install SteamCMD (from Valve's CDN) or download Workshop items (through SteamCMD).
+- **Your Steam password is entered only in Terminal**, into Valve's SteamCMD. Canlı Duvar never sees or stores it.
+- **Web wallpapers are sandboxed** in WebKit's web content process and can only read files in their own folder (tested: other files in your home folder can't be read). Like in Wallpaper Engine, a web wallpaper can still use the internet, so only add wallpapers you trust.
+- **No special permissions.** Global shortcuts use the Carbon hot-key API, which doesn't need Accessibility access, and the "covered desktop" check reads window bounds only, so it doesn't need Screen Recording either.
+
+## FAQ
+
+<details>
+<summary><b>Does it use a lot of battery?</b></summary>
+
+Videos are decoded by the media engine in hardware, once for all displays, and capped at your largest display's resolution. Everything pauses when the desktop isn't visible, when the display sleeps, on battery or in Low Power Mode (configurable in Settings). A paused wallpaper uses no CPU or GPU.
+</details>
+
+<details>
+<summary><b>Why doesn't my Wallpaper Engine "Scene" play?</b></summary>
+
+Scenes use Wallpaper Engine's own DirectX renderer and a proprietary format, so they can't be played elsewhere. Many simple scenes (one image plus a wave or shake effect) can be rebuilt as a small web wallpaper by hand; [docs/converting-scenes.md](docs/converting-scenes.md) explains how.
+</details>
+
+<details>
+<summary><b>My video is a WebM file.</b></summary>
+
+macOS can't decode WebM natively. Convert it once with `ffmpeg -i in.webm -c:v hevc_videotoolbox -tag:v hvc1 -b:v 8M out.mp4` and add the MP4.
+</details>
+
+<details>
+<summary><b>Can I see the wallpaper on the lock screen?</b></summary>
+
+macOS doesn't let apps draw on the lock screen. Turn on **Settings → Also set the preview as the static desktop picture**, and the wallpaper's still preview is used there and in Mission Control.
+</details>
+
+<details>
+<summary><b>Where are my wallpapers stored?</b></summary>
+
+In `~/Library/Application Support/CanliDuvar/Wallpapers` by default. You can choose any folder, including one on an external drive, in Settings.
+</details>
 
 ## Building from source
 
@@ -98,13 +192,13 @@ Requirements: Xcode 15+ (Swift 5.9+) on macOS 14+.
 ```bash
 git clone https://github.com/keremberkant/CanliDuvar.git
 cd CanliDuvar
-swift test                         # unit tests
-scripts/build-app.sh               # → dist/Canlı Duvar.app (universal)
-scripts/build-app.sh --install     # build and copy to /Applications
+swift test                                 # unit tests
+scripts/build-app.sh                       # → dist/Canlı Duvar.app (universal)
+scripts/build-app.sh --install             # build and copy to /Applications
 VERSION=1.2.0 scripts/build-app.sh --zip   # release zip + SHA-256
 ```
 
-You can also open `Package.swift` in Xcode and run the `CanliDuvar` scheme.
+You can also open `Package.swift` in Xcode and run the `CanliDuvar` scheme. Pushing a `v*` tag builds the universal app on GitHub Actions and attaches it to a GitHub release.
 
 ### Project layout
 
@@ -122,20 +216,24 @@ Sources/
     UI/                  SwiftUI views
 Resources/             localizations (en, tr), app icon
 Tests/                 XCTest suite for CanliDuvarCore
+examples/              sample web wallpapers
+templates/             starting points for your own wallpapers
 scripts/               build-app.sh, make-icon.swift
 ```
 
 ### How it works
 
-- One borderless `NSWindow` per display at `kCGDesktopWindowLevel` (below the icons, above the system wallpaper), on all Spaces, ignoring mouse events. Windows are reused across wallpaper changes.
-- **Video:** a single `AVQueuePlayer` + `AVPlayerLooper` is shared by every display, so a clip is decoded once no matter how many monitors you have; `preferredMaximumResolution` caps decoding at the largest display's size.
-- **Web:** `WKWebView` loading the project's file with read access limited to its folder; a small shim provides the Wallpaper Engine web API (`applyUserProperties`, `setPaused`, no-op audio/media listeners).
-- **Pausing:** sleep / session notifications, IOKit power-source notifications, `NSProcessInfoPowerStateDidChange` for Low Power Mode, and a 2-second `CGWindowList` bounds check (no screen-recording permission needed) for covered displays.
+- **Desktop windows:** one borderless `NSWindow` per display at `kCGDesktopWindowLevel` (below the icons, above the system wallpaper), on all Spaces and ignoring mouse events. Windows are reused across wallpaper changes.
+- **Video:** a single `AVQueuePlayer` + `AVPlayerLooper` is shared by every display, so a clip is decoded once no matter how many monitors you have. `preferredMaximumResolution` caps decoding at the largest display's size.
+- **Web:** a `WKWebView` loads the project's file with read access limited to its folder. A small shim provides the Wallpaper Engine web API (`applyUserProperties`, `setPaused`, no-op audio and media listeners).
+- **Pausing:** sleep and session notifications, IOKit power-source notifications, `NSProcessInfoPowerStateDidChange` for Low Power Mode, and a 2-second `CGWindowList` bounds check for covered displays.
 
 ## Contributing
 
-Issues and pull requests are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). Translations especially: add `Resources/<lang>.lproj/Localizable.strings` using the English strings as keys.
+Issues and pull requests are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md). New sample wallpapers and translations are especially appreciated. For a translation, add `Resources/<lang>.lproj/Localizable.strings` using the English strings as keys.
 
 ## License
 
-[MIT](LICENSE). Wallpaper Engine is a trademark of its respective owners; Steam and SteamCMD are trademarks of Valve Corporation.
+[MIT](LICENSE) © keremberkant.
+
+Wallpaper Engine is a trademark of its respective owners. Steam and SteamCMD are trademarks of Valve Corporation. Screenshots show the original sample wallpapers from this repository.
